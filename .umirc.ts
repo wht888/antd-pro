@@ -1,5 +1,4 @@
 import { defineConfig } from 'umi';
-import { Spin } from 'antd';
 export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
