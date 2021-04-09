@@ -1,5 +1,4 @@
-import { defineConfig } from 'umi';
-export default defineConfig({
+export const rest = {
   nodeModulesTransform: {
     type: 'none',
   },
@@ -22,4 +21,4 @@ export default defineConfig({
   manifest: {
     basePath: '/',
   },
-});
+};

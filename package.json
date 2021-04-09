@@ -6,7 +6,11 @@
     "postinstall": "umi generate tmp",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
     "test": "umi-test",
-    "test:coverage": "umi-test --coverage"
+    "test:coverage": "umi-test --coverage",
+    "start:dev": "cross-env MOCK=none UMI_ENV=dev umi dev",
+    "start:test": "cross-env MOCK=none UMI_ENV=test umi dev",
+    "build:dev": "cross-env MOCK=none UMI_ENV=dev umi build",
+    "build:test": "cross-env MOCK=none UMI_ENV=test umi build"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
