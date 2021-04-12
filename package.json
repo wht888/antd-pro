@@ -7,10 +7,10 @@
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
     "test": "umi-test",
     "test:coverage": "umi-test --coverage",
-    "start:dev": "cross-env MOCK=none UMI_ENV=dev umi dev",
-    "start:test": "cross-env MOCK=none UMI_ENV=test umi dev",
-    "build:dev": "cross-env MOCK=none UMI_ENV=dev umi build",
-    "build:test": "cross-env MOCK=none UMI_ENV=test umi build"
+    "start:dev": "cross-env REACT_APP_ENV=dev MOCK=none umi dev",
+    "start:test": "cross-env REACT_APP_ENV=test MOCK=none umi dev",
+    "build:dev": "cross-env REACT_APP_ENV=dev MOCK=none umi build",
+    "build:test": "cross-env REACT_APP_ENV=test MOCK=none umi build"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
@@ -24,6 +24,7 @@
     ]
   },
   "dependencies": {
+    "@ant-design/pro-layout": "^6.16.1",
     "@umijs/preset-react": "1.x",
     "umi": "^3.3.7"
   },

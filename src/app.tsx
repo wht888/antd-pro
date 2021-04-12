@@ -45,7 +45,17 @@ const errorHandler = (error: ResponseError) => {
   throw error;
 };
 
+const requestInterceptor = () => {
+  return {
+    options: {
+      headers: {
+        token: '123',
+      },
+    },
+  };
+};
 // https://umijs.org/zh-CN/plugins/plugin-request
 export const request: RequestConfig = {
   errorHandler,
+  requestInterceptors: [requestInterceptor],
 };
