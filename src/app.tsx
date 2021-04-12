@@ -1,6 +1,13 @@
 import { notification } from 'antd';
-import type { RequestConfig } from 'umi';
+import { RequestConfig } from 'umi';
 import type { ResponseError } from 'umi-request';
+
+export async function getInitialState() {
+  // const data = await fetchXXX();
+  return {
+    token: window.localStorage.getItem('token'),
+  };
+}
 
 const codeMessage = {
   200: '服务器成功返回请求的数据。',
@@ -49,7 +56,7 @@ const requestInterceptor = () => {
   return {
     options: {
       headers: {
-        token: '123',
+        Authorization: `Bearer ${window.localStorage.getItem('token')}` || '',
       },
     },
   };

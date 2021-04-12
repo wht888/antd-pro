@@ -7,7 +7,8 @@ const ENV: string = REACT_APP_ENV || 'prod';
 const api = {
   dev: 'http://google.com',
   test: 'http://baidu.com',
-  prod: 'http://alibaba.com',
+  // prod: 'http://alibaba.com',
+  prod: '',
 };
 
 export default defineConfig({
