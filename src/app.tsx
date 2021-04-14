@@ -1,11 +1,51 @@
+import type { Settings as LayoutSettings } from '@ant-design/pro-layout';
+import { PageLoading } from '@ant-design/pro-layout';
 import { notification } from 'antd';
-import { RequestConfig } from 'umi';
+import type { RequestConfig } from 'umi';
+import { history, Link } from 'umi';
+// import RightContent from '@/components/RightContent';
+// import Footer from '@/components/Footer';
 import type { ResponseError } from 'umi-request';
+import { getLoginInfo as queryCurrentUser } from './pages/user/login/service';
+import { BookOutlined, LinkOutlined } from '@ant-design/icons';
 
-export async function getInitialState() {
-  // const data = await fetchXXX();
+const isDev = process.env.NODE_ENV === 'development';
+const loginPath = '/user/login';
+
+/** 获取用户信息比较慢的时候会展示一个 loading */
+export const initialStateConfig = {
+  loading: <PageLoading />,
+};
+
+/**
+ * @see  https://umijs.org/zh-CN/plugins/plugin-initial-state
+ * */
+export async function getInitialState(): Promise<{
+  settings?: Partial<LayoutSettings>;
+  currentUser?: any;
+  fetchUserInfo?: () => Promise<any | undefined>;
+}> {
+  const fetchUserInfo = async () => {
+    try {
+      const currentUser = await queryCurrentUser();
+      return currentUser;
+    } catch (error) {
+      history.push(loginPath);
+    }
+    return undefined;
+  };
+  // 如果是登录页面，不执行
+  if (history.location.pathname !== loginPath) {
+    const currentUser = await fetchUserInfo();
+    return {
+      fetchUserInfo,
+      currentUser,
+      settings: {},
+    };
+  }
   return {
-    token: window.localStorage.getItem('token'),
+    fetchUserInfo,
+    settings: {},
   };
 }
 
@@ -34,8 +74,8 @@ const codeMessage = {
 const errorHandler = (error: ResponseError) => {
   const { response } = error;
   if (response && response.status) {
+    const errorText = codeMessage[response.status] || response.statusText;
     const { status, url } = response;
-    const errorText = codeMessage[status] || response.statusText;
 
     notification.error({
       message: `请求错误 ${status}: ${url}`,
@@ -61,6 +101,7 @@ const requestInterceptor = () => {
     },
   };
 };
+
 // https://umijs.org/zh-CN/plugins/plugin-request
 export const request: RequestConfig = {
   errorHandler,

@@ -9,3 +9,5 @@ declare module '*.svg' {
   export default url;
 }
 declare var API_URL: string;
+declare var DDLogin: any;
+declare var attachEvent: any;

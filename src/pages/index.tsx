@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 
 export default function IndexPage() {
   const onClick = () => {
-    window.localStorage.setItem('token', '777');
     getList();
   };
   useEffect(() => {

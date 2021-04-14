@@ -8,7 +8,7 @@ const api = {
   dev: 'http://google.com',
   test: 'http://baidu.com',
   // prod: 'http://alibaba.com',
-  prod: '',
+  prod: 'http://172.16.0.14:30001',
 };
 
 export default defineConfig({
@@ -17,7 +17,7 @@ export default defineConfig({
   },
   fastRefresh: {}, // 热更新
   dynamicImport: {
-    // loading: '加载中...'
+    loading: '@ant-design/pro-layout/es/PageLoading',
   }, // 按需加载组件
   hash: true, // 避免浏览器加载缓存
   history: {
@@ -30,4 +30,5 @@ export default defineConfig({
   define: {
     API_URL: api[ENV],
   },
+  title: false,
 });
