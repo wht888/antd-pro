@@ -18,7 +18,7 @@ export const getLoginInfo = () => {
   return request(`${API_URL}/settings/User/GetLoginInfo`, {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${window.localStorage.getItem('token')}` || '',
+      Authorization: `Bearer ${window.localStorage.getItem('token')}`,
     },
   });
 };

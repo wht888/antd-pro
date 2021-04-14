@@ -11,7 +11,7 @@ export default () => {
   return (
     <div>
       <Helmet>
-        <title>My Title</title>
+        <title>登录</title>
       </Helmet>
       <div className={styles.container}>
         <div className={styles.content}>
