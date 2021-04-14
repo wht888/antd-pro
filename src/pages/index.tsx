@@ -17,7 +17,7 @@ export default function IndexPage() {
   return (
     <div>
       <h1 className={styles.title}>Page index</h1>
-      <span onClick={onClick}>哈哈哈哈</span>
+      <span onClick={onClick}>哈哈哈哈1</span>
     </div>
   );
 }

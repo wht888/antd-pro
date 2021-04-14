@@ -77,7 +77,6 @@ export default () => {
         rules={[{ required: true, message: '请输入密码!' }]}
       >
         <Input.Password
-          onPressEnter={onFinish}
           placeholder="请输入密码"
           allowClear
           prefix={<LockOutlined className={styles.prefixIcon} />}
